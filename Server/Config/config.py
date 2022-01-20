@@ -4,6 +4,7 @@ from dataclasses import dataclass
 @dataclass
 class Config:
 
+    DATABASE_NAME: str = "juniverse"
     DATABASE_PORT_NUMBER: int = 3306
     DATABASE_ADDRESS: str = '127.0.0.1'
     DATABASE_USER_NAME: str = 'root'
@@ -13,6 +14,8 @@ class Config:
     SERVER_URL_SCHEME: str = 'http'
     SERVER_PORT_NUMBER: int = 8000
 
+
+config_args = Config()
 
 
 
