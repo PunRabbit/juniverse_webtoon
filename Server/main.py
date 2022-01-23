@@ -1,9 +1,22 @@
 import uvicorn
 from fastapi import FastAPI, WebSocket
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from Server.Config.config import config_args
 from Server.Get.get_class import DefaultMessage
 
 app = FastAPI()
+
+app.mount("/", StaticFiles(directory="Static", html=True), name="static")
+
+# cors 등록 (개발단계 전체 허용)
+origin_source = ['*']
+
+app.middleware(CORSMiddleware,
+               allow_origins=['*'],
+               allow_credentials=True,
+               allow_methods=['*'],
+               allow_headers=['*'])
 
 
 @app.get('/')

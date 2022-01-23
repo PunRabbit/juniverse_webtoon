@@ -4,3 +4,4 @@ pydantic
 aiomysql
 pymysql
 python-dotenv
+aiofiles
