@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from Server.Config.config import config_args
 from Server.Get.get_class import DefaultMessage
+from Server.Middleware.ban_ip import TargetBenMiddleware
 
 app = FastAPI()
 
@@ -17,6 +18,8 @@ app.middleware(CORSMiddleware,
                allow_credentials=True,
                allow_methods=['*'],
                allow_headers=['*'])
+
+app.add_middleware(TargetBenMiddleware)
 
 
 @app.get('/')
@@ -33,4 +36,6 @@ async def websocket_endpoint(websocket: WebSocket):
 
 
 if __name__ == '__main__':
-    uvicorn.run(app, host=config_args.SERVER_URL_ADDRESS, port=config_args.SERVER_PORT_NUMBER)
+    uvicorn.run('main:app',
+                host=config_args.SERVER_URL_ADDRESS,
+                port=config_args.SERVER_PORT_NUMBER)
