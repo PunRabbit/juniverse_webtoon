@@ -1,10 +1,12 @@
 aiofiles==0.8.0
+aiomysql==0.0.22
+bcrypt==3.2.0
+cryptography==36.0.1
 fastapi==0.73.0
 pydantic==1.9.0
-python-dotenv==0.19.2
-starlette==0.17.1
-typing_extensions==4.0.1
-uvicorn==0.17.0
-aiomysql==0.0.22
 PyMySQL==0.9.3
 python-dotenv==0.19.2
+starlette==0.17.1
+starlette-context==0.3.3
+typing_extensions==4.0.1
+uvicorn==0.17.0

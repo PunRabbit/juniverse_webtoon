@@ -6,7 +6,7 @@ load_dotenv(verbose=True)
 
 
 @dataclass
-class Config:
+class Config(object):
 
     DATABASE_NAME: str = os.getenv('database_name')
     DATABASE_PORT_NUMBER: int = int(os.getenv('database_port_number'))
@@ -17,6 +17,8 @@ class Config:
     SERVER_URL_ADDRESS: str = os.getenv('server_url_address')
     SERVER_URL_SCHEME: str = os.getenv('server_url_scheme')
     SERVER_PORT_NUMBER: int = int(os.getenv('server_port_number'))
+    SERVER_BCRYPT_KEY: str = os.getenv('server_bcrypt_key')
+    SERVER_CRYPTOGRAPHY_KEY: str = os.getenv('server_cryptography_key')
 
 
 config_args = Config()
