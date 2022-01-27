@@ -13,7 +13,6 @@ from Server.Routers.Class.Post.post_class import MainPost
 from Server.Routers.Class.Get.get_class import MainGet
 
 
-
 def create_app():
     new_app = FastAPI()
     new_app.middleware('http')()
@@ -47,9 +46,11 @@ async def main_page(response: MainGet):
 @app.post('/main')
 async def test_main_page(response: MainPost):
     context.update(user_id=response.user_id)
-    key_generator = CryptographyKeyGenerator(response.key)
-    await key_generator.gen_key()
-    return f"Hi! I'm Here! {response.test_message}"
+    if context['is_pass'] is True:
+        key_generator = CryptographyKeyGenerator(response.key)
+        await key_generator.gen_key()
+        return f"Hi! I'm Here! {response.test_message}"
+
 
 @app.websocket('/socket')
 async def websocket_endpoint(websocket: WebSocket):

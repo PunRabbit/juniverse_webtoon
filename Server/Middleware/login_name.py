@@ -9,6 +9,7 @@ class LoginUserName(BanList):
 
     @classmethod
     async def take_login_name(cls, request: Request, call_next):
+        context.update(is_pass=True)
         response = await call_next(request)
         if context["user_id"] in ban_list.target_ban_list:
             return JSONResponse(status_code=status.HTTP_404_NOT_FOUND, content={"message": "Not Allowed"})
